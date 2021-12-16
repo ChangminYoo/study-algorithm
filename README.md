@@ -1,7 +1,7 @@
 # TIL
 
 ***
-## 시작
+## 2021-12-15
 공부 서적 - 로버트 나일스트롬 '게임 프로그래밍 패턴'
 
 - 코드를 얼마나 쉽게 변경할 수 있느냐가 코드 설계를 평가하는 척도가 된다.
@@ -16,3 +16,24 @@
 2. 가정을 코드에 박아 넣어야 하는 저수준의 핵심 최적화는 가능하면 늦게.
 3. 버릴코드 잘만들겟다고 시간낭비X
 4. **재미있는 걸 만들고 싶다면 먼저 만드는 데에서 재미를 찾자.
+
+
+## 2021-12-16
+- string 문자열 치환
+- 프로그래머스 '숫자 문자열과 영단어' 풀이 방법
+```c++
+#include <iostream>
+#include <string>
+#include <regex>
+int main()
+{
+  string str = "one2threefour";
+  str.replace(0,2, "1")
+  cout << str << end;  // 12threefour
+  
+  str = regex_replace(str, regex("one"), "1");
+  str = regex_replace(str, regex("three"), "3");
+  str = regex_replace(str, regex("four"), "4");
+  cout << str;  // 1234
+}
+```
