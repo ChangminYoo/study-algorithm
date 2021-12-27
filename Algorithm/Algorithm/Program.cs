@@ -8,7 +8,7 @@ namespace Algorithm
 		{
 			Console.CursorVisible = false;
 			int lastTick = 0;
-			const int waitTick = 1000 / 100;
+			const int waitTick = 1000 / 60;
 			const int boardX = 25, boardY = 25;
 
 			while (true)
