@@ -32,6 +32,7 @@ namespace Algorithm
 			{
 				for(int j = 0; j < sizeY; j++)
 				{
+					Console.ForegroundColor = ConsoleColor.Green;
 					Console.Write(circle);
 				}
 				Console.WriteLine();
