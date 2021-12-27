@@ -1,0 +1,13 @@
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\bin\Debug\netcoreapp3.1\Algorithm.exe
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\bin\Debug\netcoreapp3.1\Algorithm.deps.json
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\bin\Debug\netcoreapp3.1\Algorithm.runtimeconfig.json
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\bin\Debug\netcoreapp3.1\Algorithm.runtimeconfig.dev.json
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\bin\Debug\netcoreapp3.1\Algorithm.dll
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\bin\Debug\netcoreapp3.1\Algorithm.pdb
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\obj\Debug\netcoreapp3.1\Algorithm.csprojAssemblyReference.cache
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\obj\Debug\netcoreapp3.1\Algorithm.csproj.CoreCompileInputs.cache
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\obj\Debug\netcoreapp3.1\Algorithm.AssemblyInfoInputs.cache
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\obj\Debug\netcoreapp3.1\Algorithm.AssemblyInfo.cs
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\obj\Debug\netcoreapp3.1\Algorithm.dll
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\obj\Debug\netcoreapp3.1\Algorithm.pdb
+D:\YCM\Programming\TodayILearned\Algorithm\Algorithm\obj\Debug\netcoreapp3.1\Algorithm.genruntimeconfig.cache
