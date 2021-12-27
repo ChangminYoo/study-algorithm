@@ -51,3 +51,23 @@ int main()
 - 경량 패턴 공부
 - 객체의 개수가 너무 많아서 가볍게 만들고 싶을때 사용
 - 열거형을 선언해 수많은 다중 선택문(switch)을 만들 생각이라면, 경량 패턴을 먼저 고려해 보자
+
+- 프로그래머스 숫자 판단하는 함수  * isdigit()
+```c++
+include <string>
+#include <vector>
+using namespace std;
+
+bool solution(string s) {
+    bool answer = true;
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (!isdigit(s[i]))
+            answer = false;
+    }
+
+    return s.size() == 4 || s.size() == 6 ? answer : false;
+}
+
+```
