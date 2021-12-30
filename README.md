@@ -71,3 +71,21 @@ bool solution(string s) {
 }
 
 ```
+## 2021-12-30
+ - 프로그래머스 최대공약수와 최소공배수
+ - 자꾸 까먹는 공식
+
+```
+// 최대 공약수
+int gcd(int a, int b)
+{
+	  if (b == 0) return a;
+    return gcd(b, a % b);    
+}
+// 최소 공배수
+int lcm(int a, int b)
+{
+    return (a * b) / gcd(a,b);
+}
+
+```
