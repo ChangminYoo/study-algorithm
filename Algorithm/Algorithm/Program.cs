@@ -6,37 +6,31 @@ namespace Algorithm
 	{
 		static void Main(string[] args)
 		{
+			Board board = new Board();
+			Player player = new Player();
+			board.Initialize(25, player);
+			player.Initialize(1, 1, board);
+
 			Console.CursorVisible = false;
 			int lastTick = 0;
-			const int waitTick = 1000 / 60;
-			const int boardX = 25, boardY = 25;
+			const int wait_Tick = 1000 / 60;
 
 			while (true)
 			{
 				#region 프레임 관리
 				int currTick = System.Environment.TickCount;
-				if (currTick - lastTick < waitTick) continue;
+				int delatTick = currTick - lastTick;
+				if (delatTick < wait_Tick) continue;
 				lastTick = currTick;
 				#endregion
 
+				player.Update(delatTick);
+
 				Console.SetCursorPosition(0, 0);
-				Print(boardX, boardY);
+				board.Render();
 			}
 			
 		}
 
-		static void Print(int sizeX, int sizeY)
-		{
-			const char circle = '\u25cf';
-			for (int i = 0; i < sizeX; i++)
-			{
-				for(int j = 0; j < sizeY; j++)
-				{
-					Console.ForegroundColor = ConsoleColor.Green;
-					Console.Write(circle);
-				}
-				Console.WriteLine();
-			}
-		}
 	}
 }
