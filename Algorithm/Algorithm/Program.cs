@@ -18,7 +18,7 @@ namespace Algorithm
 			while (true)
 			{
 				#region 프레임 관리
-				int currTick = System.Environment.TickCount;
+				int currTick = Environment.TickCount & Int32.MaxValue;
 				int delatTick = currTick - lastTick;
 				if (delatTick < wait_Tick) continue;
 				lastTick = currTick;
