@@ -5,6 +5,14 @@ namespace Graph
 {
 	class Graph
 	{
+		//    0
+		//  /  |
+		// 1 - 3 
+		// |   |
+		// 2   4   
+		//	   |
+		//	   5
+
 		int[,] adj = new int[6, 6]
 		{
 			{ 0, 1, 0, 1, 0, 0 },
@@ -52,6 +60,27 @@ namespace Graph
 			}
 		}
 
+		public void DFS_Stack(int now)
+		{
+			Stack<int> s = new Stack<int>();
+			s.Push(now);
+			visited[now] = true;
+
+			while (s.Count > 0)
+			{
+				now = s.Pop();
+				Console.WriteLine(now);
+
+				foreach (int next in adj2[now])
+				{
+					if (visited[next]) continue;
+					visited[next] = true;
+					s.Push(next);
+				}
+			}
+
+		}
+
 		public void SearchAll()
 		{
 			visited = new bool[6];
@@ -94,10 +123,10 @@ namespace Graph
 		{
 			Graph graph = new Graph();
 			// DFS
-			//graph.DFS2(0);
+			graph.DFS_Stack(0);
 
 			// BFS
-			graph.BFS(0);
+			//graph.BFS(0);
 		}
 	}
 }
