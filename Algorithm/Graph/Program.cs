@@ -15,12 +15,12 @@ namespace Graph
 
 		int[,] adj = new int[6, 6]
 		{
-			{ 0, 1, 0, 1, 0, 0 },
-			{ 1, 0, 1, 1, 0, 0 },
-			{ 0, 1, 0, 0, 0, 0 },
-			{ 1, 1, 0, 0, 1, 0 },
-			{ 0, 0, 0, 1, 0, 1 },
-			{ 0, 0, 0, 0, 1, 0 },
+			{ -1, 15, -1, 35, -1, -1 },
+			{ 14, -1, 5, 10, -1, -1 },
+			{ -1, 5, -1, -1, -1, -1 },
+			{ 35, 10, -1, -1, 5, -1 },
+			{ -1, -1, -1, 5, -1, 5 },
+			{ -1, -1, -1, -1, 5, -1 },
 		};
 
 		List<int>[] adj2 = new List<int>[]
@@ -41,7 +41,7 @@ namespace Graph
 
 			for (int next = 0; next < 6; next++)
 			{
-				if (adj[now, next] == 0) continue;
+				if (adj[now, next] < 0) continue;
 				if (visited[next]) continue;
 
 				DFS(next);
@@ -106,7 +106,7 @@ namespace Graph
 
 				for (int next = 0; next < 6; next++)
 				{
-					if (adj[now, next] == 0) continue;
+					if (adj[now, next] < 0) continue;
 					if (visited[next]) continue;
 
 					q.Enqueue(next);
@@ -115,6 +115,56 @@ namespace Graph
 			}
 		}
 
+		void DijkstraNoPrioriyQueue(int start)
+		{
+			int[] distance = new int[6];
+			int[] parent = new int[6];
+			Array.Fill(distance, Int32.MaxValue);
+
+			distance[start] = 0;
+			parent[start] = start;
+			while (true)
+			{
+				// 가장 가까이에 있는 후보 탐색
+
+				// 가장 유력한 후보의 거리와 번호 저장
+				int closet = Int32.MaxValue;
+				int now = -1;
+				for (int i = 0; i < 6; i++)
+				{
+					if (visited[i]) continue;
+
+					// 아직 방문되지 않았거나, 기존 후보보다 멀리있으면 스킵
+					if (distance[i] == Int32.MaxValue || distance[i] >= closet) continue;
+
+					closet = distance[i];
+					now = i;
+				}
+
+				if (now == -1)
+					break;
+
+				visited[now] = true;
+
+				// 방문한 정점과 인접한 정점들을 조사해서
+				// 상황에 따라 발견한 최단거리를 갱신한다.
+				for (int next = 0; next < 6; next++)
+				{
+					// 연결되지 않은 정점 스킵
+					if (adj[now, next] == -1) continue;
+					if (visited[next]) continue;
+
+					// 새로 조사된 정점의 최단거리를 계산한다.
+					int nextDist = distance[now] + adj[now, next];
+					if (nextDist < distance[next])
+					{
+						distance[next] = nextDist;
+						parent[next] = now;
+					}
+				}
+			}
+
+		}
 	}
 
 	class Program
