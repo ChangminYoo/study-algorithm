@@ -184,6 +184,7 @@ namespace Graph
 
 			int now = _heap.Count - 1;
 
+			// 맨 아래부터 올라오면서 비교하여 자기에게 맞는 자리 찾는다
 			while (now > 0)
 			{
 				int next = (now - 1) / 2;
@@ -209,6 +210,7 @@ namespace Graph
 			lastIndex--;
 
 			int now = 0;
+			// 맨 위에서 부터 내려가면서 자기자리 찾는다.
 			while (true)
 			{
 				int left = (now * 2) + 1;
