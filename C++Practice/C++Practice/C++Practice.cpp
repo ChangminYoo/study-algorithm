@@ -1,10 +1,10 @@
 ﻿#include <cmath>
-#include <vector>
 #include <string>
 #include <algorithm>
 #include "LinkedList.h"
+#include "Graph.h"
 
-int main()
+void LinkedListTest()
 {
     LinkedList<int> list;
     list.Insert(0);
@@ -26,5 +26,20 @@ int main()
 
     list.Delete(2);
     list.Print();
+}
+
+void GraphTest()
+{
+    Graph* graph = new Graph();
+    graph->InitList();
+
+    //graph->DFS(3);
+    //graph->DFSWithStack(0);
+    graph->BFS(0);
+}
+
+int main()
+{
+    GraphTest();
 }
 

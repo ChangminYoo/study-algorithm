@@ -1,6 +1,3 @@
-#ifndef __LINKED_LIST_H__
-#define __LINKED_LIST_H__
-
 #include <iostream>
 using namespace std;
 
@@ -46,11 +43,8 @@ public:
 	}
 };
 
-
-#endif
-
 template<typename T>
-inline void LinkedList<T>::Insert(T t)
+void LinkedList<T>::Insert(T t)
 {
 	Node<T>* newData = new Node<T>(t);
 	_size++;
@@ -77,7 +71,7 @@ inline void LinkedList<T>::Insert(T t)
 }
 
 template<typename T>
-inline void LinkedList<T>::Delete(T t)
+void LinkedList<T>::Delete(T t)
 {
 	if (_head == nullptr) { cout << "Linked List is Empty" << endl; return; }
 	_size--;
