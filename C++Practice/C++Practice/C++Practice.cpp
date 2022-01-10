@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 #include "LinkedList.h"
-#include "Graph.h"
+#include "PathFind.h"
 
 void LinkedListTest()
 {
@@ -31,11 +31,14 @@ void LinkedListTest()
 void GraphTest()
 {
     Graph* graph = new Graph();
-    graph->InitList();
+    //graph->InitList();
 
     //graph->DFS(3);
     //graph->DFSWithStack(0);
-    graph->BFS(0);
+    //graph->BFS(0);
+
+    PathFind* pathfind = new PathFind();
+    pathfind->Dijkstra(0);
 }
 
 int main()
