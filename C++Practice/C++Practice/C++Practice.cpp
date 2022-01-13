@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 #include "LinkedList.h"
-#include "PathFind.h"
+#include "Dijkstra.h"
 
 void LinkedListTest()
 {
@@ -37,8 +37,8 @@ void GraphTest()
     //graph->DFSWithStack(0);
     //graph->BFS(0);
 
-    PathFind* pathfind = new PathFind();
-    pathfind->Dijkstra(0);
+    Dijkstra* dijkstra = new Dijkstra();
+    dijkstra->Generate(0);
 }
 
 int main()

@@ -26,7 +26,10 @@
     <ClInclude Include="LinkedList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="PathFind.h">
+    <ClInclude Include="Dijkstra.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AStar.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
