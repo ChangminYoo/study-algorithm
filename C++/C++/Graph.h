@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -113,8 +114,38 @@ public:
 				q.push(next);
 				visited[next] = true;
 			}
-
 		}
+	}
+};
 
+// weight
+class Graph2
+{
+public:	
+	int V = 9;
+	int E = 14;
+	vector<pair<int, pair<int, int>>> adjacencyList; // wight (u, v);
+	Graph2()
+	{
+		AddEdge(0, 1, 4);
+		AddEdge(0, 7, 8);
+		AddEdge(1, 2, 8);
+		AddEdge(1, 7, 11);
+		AddEdge(2, 3, 7);
+		AddEdge(2, 8, 2);
+		AddEdge(2, 5, 4);
+		AddEdge(3, 4, 9);
+		AddEdge(3, 5, 14);
+		AddEdge(4, 5, 10);
+		AddEdge(5, 6, 2);
+		AddEdge(6, 7, 1);
+		AddEdge(6, 8, 6);
+		AddEdge(7, 8, 7);
+	}
+	~Graph2() {}
+
+	void AddEdge(int u, int v, int w)
+	{
+		adjacencyList.push_back({w ,{ u,v } });
 	}
 };
