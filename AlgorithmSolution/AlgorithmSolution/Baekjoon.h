@@ -1,6 +1,9 @@
 #pragma once
 #pragma warning(disable:4996)
-#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
 using namespace std;
 
 // 2178
@@ -33,4 +36,74 @@ using namespace std;
 //            }
 //        }
 //    }
+//}
+
+
+//2667
+//int N;
+//int arr[26][26];
+//bool visited[26][26] = { false, };
+//int dirX[4] = { 1,0,-1,0 };
+//int dirY[4] = { 0,1,0,-1 };
+//
+//int BFS(int x, int y)
+//{
+//	int group = 1;
+//	queue<pair<int, int>> q;
+//	q.push({ y,x });
+//	visited[y][x] = true;
+//	while (!q.empty())
+//	{
+//		int ny = q.front().first;
+//		int nx = q.front().second;
+//		q.pop();
+//
+//		for (int i = 0; i < 4; i++)
+//		{
+//			int nextX = nx + dirX[i];
+//			int nextY = ny + dirY[i];
+//
+//			if (nextX < 0 || nextX >= N || nextY < 0 || nextY >= N) continue;
+//			if (visited[nextY][nextX]) continue;
+//			if (arr[nextY][nextX] == 0) continue;
+//
+//			q.push({ nextY, nextX });
+//			visited[nextY][nextX] = true;
+//			group++;
+//		}
+//	}
+//
+//	return group;
+//}
+//
+//int main()
+//{
+//	cin >> N;
+//	int cnt = 0;
+//	vector<int> v;
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = 0; j < N; j++)
+//		{
+//			scanf("%1d", &arr[i][j]);
+//		}
+//	}
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = 0; j < N; j++)
+//		{
+//			if (arr[i][j] == 1 && visited[i][j] == false)
+//			{
+//				cnt++;
+//				v.push_back(BFS(j, i));
+//			}
+//		}
+//	}
+//	sort(v.begin(), v.end());
+//	cout << cnt << "\n";
+//	for (auto& i : v)
+//	{
+//		cout << i << "\n";
+//	}
 //}
