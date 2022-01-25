@@ -328,7 +328,7 @@ vector<int> solution(vector<string> grid) {
 #pragma endregion
 
 #pragma region 프린터
-int solution(vector<int> priorities, int location) {
+int 프린터(vector<int> priorities, int location) {
 	int answer = 0;
 	int biggest = 0;
 	vector<pair<int, int>> v;  // 중요도, 원래 인덱스
@@ -373,7 +373,7 @@ bool compare(int a, int b)
 {
 	return to_string(a) + to_string(b) > to_string(b) + to_string(a);
 }
-string solution(vector<int> numbers) {
+string 가장큰수(vector<int> numbers) {
 	string answer = "";
 
 	sort(numbers.begin(), numbers.end(), compare);
@@ -404,7 +404,7 @@ bool isPrime(int n)
 	return true;
 }
 
-int solution(string numbers) {
+int 소수찾기(string numbers) {
 	int answer = 0;
 	unordered_set<int> us;
 
@@ -432,7 +432,7 @@ int solution(string numbers) {
 }
 #pragma endregion
 
-#pragma region 조이스틱
+#pragma region 조이스틱 ................ 미완
 
 int CheckUpDown(char c)
 {
@@ -454,7 +454,7 @@ int solution(string name)
 #pragma endregion
 
 #pragma region 게임맵 최단거리
-int solution(vector<vector<int> > maps)
+int 최단거리(vector<vector<int> > maps)
 {
 	int answer = 0;
 	int n = maps.size() - 1;
@@ -636,4 +636,150 @@ int sol(string s)
 
 	return answer;
 }
+#pragma endregion
+
+#pragma region 배달
+int 배달(int N, vector<vector<int> > road, int K) {
+	int answer = 0;
+
+	vector<pair<int, int>> v[51]; // to, dist
+	int distance[51];
+	fill(&distance[0], &distance[51], 500001);
+
+	distance[1] = 0;
+
+	for (int i = 0; i < road.size(); i++)
+	{
+		int a = road[i][0];
+		int b = road[i][1];
+		int dist = road[i][2];
+
+		v[a].push_back({ b, dist });
+		v[b].push_back({ a, dist });
+	}
+
+	queue<int> q;
+	q.push(1);
+	while (!q.empty())
+	{
+		int n = q.front();
+		q.pop();
+
+		for (int i = 0; i < v[n].size(); i++)
+		{
+			int next = v[n][i].first;
+			int nextDistance = v[n][i].second;
+			if (nextDistance > K) continue;
+
+			nextDistance += distance[n];
+
+			if (nextDistance < distance[next])
+			{
+				distance[next] = nextDistance;
+				if (nextDistance < K)
+				{
+					q.push(next);
+				}
+			}
+		}
+	}
+
+	for (int i = 1; i <= N; i++)
+	{
+		if (distance[i] <= K)
+		{
+			answer++;
+		}
+	}
+
+	return answer;
+}
+#pragma endregion
+
+#pragma region 위장
+int 위장(vector<vector<string>> clothes) {
+	int answer = 1;
+	multimap<string, string> mm;
+
+	for (int i = 0; i < clothes.size(); i++)
+	{
+		mm.insert({ clothes[i][1], clothes[i][0] });
+	}
+
+	// 경우의 수
+	// 눈 3개 상의 2개  하의 2개일 경우의 수는
+	// (3+1) * (2+1) * (2+1)   -  +1은 선택 안했을 경우
+
+	string key;
+	for (auto iter = mm.begin(); iter != mm.end(); iter++)
+	{
+		if (key == iter->first) continue;
+
+		key = iter->first;
+		int num = 0;
+		for (auto i = mm.equal_range(key).first; i != mm.equal_range(key).second; i++)
+		{
+			num++;
+		}
+
+		answer *= (num + 1);
+	}
+
+	return answer - 1; // 아무것도 안선택한 경우는 제외
+}
+#pragma endregion
+
+#pragma region 다리를 지나는 트럭
+int 다리를지나는트럭(int bridge_length, int weight, vector<int> truck_weights) {
+	int answer = 0;
+	queue<int> q;
+	int index = 0;
+	int totalweight = 0;
+
+	for (int i = 0; i < bridge_length; i++)
+	{
+		q.push(0);
+	}
+
+	while (!q.empty())
+	{
+		answer++;
+		totalweight -= q.front();
+		q.pop();
+
+		if (index < truck_weights.size())
+		{
+			if (totalweight + truck_weights[index] <= weight)
+			{
+				totalweight += truck_weights[index];
+				q.push(truck_weights[index++]);
+			}
+			else
+			{
+				q.push(0);
+			}
+		}
+
+	}
+
+	return answer;
+}
+#pragma endregion
+
+#pragma region H-Index
+int HIndex(vector<int> citations) {
+	int answer = 0;
+	sort(citations.begin(), citations.end(), greater<int>());
+
+	for (int i = 0; i < citations.size(); i++)
+	{
+		if (i + 1 <= citations[i])
+		{
+			answer = i + 1;
+		}
+	}
+
+	return answer;
+}
+
 #pragma endregion
