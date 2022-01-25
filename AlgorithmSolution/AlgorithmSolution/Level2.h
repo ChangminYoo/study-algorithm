@@ -508,3 +508,132 @@ int solution(vector<vector<int> > maps)
 
 
 #pragma endregion
+
+#pragma region 괄호 회전하기
+
+bool algo(string s)
+{
+	stack<char> st;
+	st.push(s[0]);
+	char top = st.top();
+	if (top == ')' || top == '}' || top == ']') return false;
+
+	for (int i = 1; i < s.length(); i++)
+	{
+		if (s[i] != ')' && s[i] != '}' && s[i] != ']')
+		{
+			st.push(s[i]);
+			top = st.top();
+		}
+		else
+		{
+			if (top == '(')
+			{
+				if (s[i] != ')')
+				{
+					return false;
+				}
+				else
+				{
+					if (st.empty())
+					{
+						return false;
+					}
+					else
+					{
+						st.pop();
+						if (!st.empty())
+						{
+							top = st.top();
+						}
+					}
+				}
+			}
+			else if (top == '{')
+			{
+				if (s[i] != '}')
+				{
+					return false;
+				}
+				else
+				{
+					if (st.empty())
+					{
+						return false;
+					}
+					else
+					{
+						st.pop();
+						if (!st.empty())
+						{
+							top = st.top();
+						}
+					}
+				}
+			}
+			else if (top == '[')
+			{
+				if (s[i] != ']')
+				{
+					return false;
+				}
+				else
+				{
+					if (st.empty())
+					{
+						return false;
+					}
+					else
+					{
+						st.pop();
+						if (!st.empty())
+						{
+							top = st.top();
+						}
+					}
+				}
+			}
+		}
+	}
+
+	if (st.empty())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+int sol(string s)
+{
+	int answer = 0;
+	vector<bool> v;
+	for (int i = 0; i < s.length(); i++)
+	{
+		string ns;
+
+		for (int j = i; j < s.length(); j++)
+		{
+			ns += s[j];
+		}
+		for (int k = 0; k < i; k++)
+		{
+			ns += s[k];
+		}
+
+		v.push_back(algo(ns));
+	}
+
+	for (const auto& i : v)
+	{
+		if (i)
+		{
+			answer++;
+		}
+	}
+
+	return answer;
+}
+#pragma endregion
