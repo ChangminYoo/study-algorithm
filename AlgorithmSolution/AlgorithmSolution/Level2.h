@@ -783,3 +783,71 @@ int HIndex(vector<int> citations) {
 }
 
 #pragma endregion
+
+#pragma region Ä«Æê
+vector<int> Ä«Æê(int brown, int yellow) {
+	vector<int> answer;
+	int sum = brown + yellow;
+
+	for (int w = 3; w <= sum / 2; w++)
+	{
+		bool find = false;
+		for (int h = 3; h <= sum / 2; h++)
+		{
+			int y_w = w - 2;
+			int y_h = h - 2;
+
+			if (w * h == sum)
+			{
+				if (y_w * y_h == yellow)
+				{
+					answer.push_back(w);
+					answer.push_back(h);
+					find = true;
+					break;
+				}
+			}
+		}
+		if (find) break;
+	}
+
+	sort(answer.begin(), answer.end(), greater<int>());
+	return answer;
+}
+
+#pragma endregion
+
+#pragma region ÇÇ·Îµµ
+
+int needEnergy[8];
+int useEnergy[8];
+bool visited[8];
+int answer = 0;
+void DFS(int k, int count, vector<vector<int>>& dungeons)
+{
+	for (int i = 0; i < dungeons.size(); i++)
+	{
+		if (visited[i]) continue;
+		if (k < needEnergy[i]) continue;
+
+		visited[i] = true;
+		DFS(k - useEnergy[i], count + 1, dungeons);
+		visited[i] = false;
+	}
+
+	answer = max(answer, count);
+}
+
+int ÇÇ·Îµµ(int k, vector<vector<int>> dungeons) {
+
+	for (int i = 0; i < dungeons.size(); i++)
+	{
+		needEnergy[i] = dungeons[i][0];
+		useEnergy[i] = dungeons[i][1];
+	}
+	DFS(k, 0, dungeons);
+
+	return answer;
+}
+#pragma endregion
+

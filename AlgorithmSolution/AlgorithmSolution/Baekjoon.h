@@ -241,6 +241,91 @@ using namespace std;
 //}
 #pragma endregion
 
+#pragma region 1697
+//bool visited[100001];
+//int time[100001];
+//void Sol(int n, int k)
+//{
+//    queue<int> q;
+//    q.push(n);
+//    visited[n] = true;
+//    while (!q.empty())
+//    {
+//        int front = q.front();
+//        q.pop();
+//
+//        if (front < 0 || front > 100000) continue;
+//        if (front == k)
+//        {
+//            break;
+//        }
+//
+//        if (front - 1 >= 0 && front - 1 <= 100000 && visited[front - 1] == false)
+//        {
+//            visited[front - 1] = true;
+//            q.push(front - 1);
+//            time[front - 1] = time[front] + 1;
+//        }
+//        if (front + 1 >= 0 && front + 1 <= 100000 && visited[front + 1] == false)
+//        {
+//            visited[front + 1] = true;
+//            q.push(front + 1);
+//            time[front + 1] = time[front] + 1;
+//        }
+//        if (front * 2 >= 0 && front * 2 <= 100000 && visited[front * 2] == false)
+//        {
+//            visited[front * 2] = true;
+//            q.push(front * 2);
+//            time[front * 2] = time[front] + 1;
+//        }
+//
+//    }
+//}
+#pragma endregion
+
+#pragma region 11724
+//vector<int> v[1001];
+//bool visited[1001];
+//
+//void dfs(int n)
+//{
+//    for (int i = 0; i < v[n].size(); i++)
+//    {
+//        int next = v[n][i];
+//        if (visited[next]) continue;
+//
+//        visited[next] = true;
+//        dfs(next);
+//    }
+//}
+//
+//int main()
+//{
+//    int N, M;
+//    cin >> N >> M;
+//
+//    for (int i = 0; i < M; i++)
+//    {
+//        int a, b;
+//        cin >> a >> b;
+//
+//        v[a].push_back(b);
+//        v[b].push_back(a);
+//    }
+//    int cnt = 0;
+//    for (int i = 1; i <= N; i++)
+//    {
+//        if (visited[i] == false)
+//        {
+//            visited[i] = true;
+//            dfs(i);
+//            cnt += 1;
+//        }
+//    }
+//
+//    cout << cnt;
+//}
+#pragma endregion
 
 // Greedy
 #pragma region 11399
