@@ -352,3 +352,69 @@ using namespace std;
 //    printf("%d\n", time);
 //}
 #pragma endregion
+
+
+
+// recursion
+#pragma region 1629
+// 분할 정복
+long long Sol(long long a, long long b, long long c)
+{
+	if (b <= 0)
+	{
+		return a % c;
+	}
+
+	long long val = Sol(a, b / 2, c);
+	val = val * val % c;
+	if (val % 2 == 0)
+	{
+		return val;
+	}
+
+	return val * a % c;
+}
+#pragma endregion
+
+#pragma region 11729
+//Hanoi
+
+void Hanoi(int n, int from, int by, int to)
+{
+	if (n == 1)
+	{
+		cout << from << " " << to << "\n";
+		return;
+	}
+
+	Hanoi(n - 1, from, to, by);
+	cout << from << " " << to << "\n";
+	Hanoi(n - 1, by, from, to);
+}
+
+#pragma endregion
+
+#pragma region 1074
+int Z(int n, int r, int c)
+{
+	if (n == 0) return 0;
+	int half = 1 << (n - 1);
+
+	if (r < half && c < half) // 1
+	{
+		return Z(n - 1, r, c);
+	}
+	else if (r < half && c >= half) // 2
+	{
+		return half * half + Z(n - 1, r, c - half);
+	}
+	else if (r >= half && c < half) // 3
+	{
+		return 2 * half * half + Z(n - 1, r - half, c);
+	}
+	else // 4
+	{
+		return 3 * half * half + Z(n - 1, r - half, c - half);
+	}
+}
+#pragma endregion

@@ -851,3 +851,182 @@ int 피로도(int k, vector<vector<int>> dungeons) {
 }
 #pragma endregion
 
+#pragma region 삼각달팽이
+enum Dir
+{
+	Down = 0,
+	Right,
+	Up
+};
+
+vector<int> 삼각달팽이(int n) {
+	vector<int> answer;
+	Dir dir = Dir::Down;
+	vector<int> v[1000];
+
+	for (int i = 0; i < n; i++)
+	{
+		v[i].resize(n);
+	}
+
+	int x = 0;
+	int y = 0;
+	int number = 1;
+	int cnt = n;
+	int a = 0;
+
+	while (cnt > 0)
+	{
+		switch (dir)
+		{
+		case Down:
+			a = 0;
+			while (a < cnt)
+			{
+				v[y][x] = number;
+
+				if (a + 1 < cnt)
+				{
+					y++;
+				}
+				number++;
+				a++;
+			}
+			x++;
+			dir = Dir::Right;
+			break;
+		case Right:
+			a = 0;
+			while (a < cnt)
+			{
+				v[y][x] = number;
+
+				if (a + 1 < cnt)
+				{
+					x++;
+				}
+				number++;
+				a++;
+			}
+			y--;
+			x--;
+			dir = Dir::Up;
+			break;
+		case Up:
+			a = 0;
+			while (a < cnt)
+			{
+				v[y][x] = number;
+
+				if (a + 1 < cnt)
+				{
+					y--;
+					x--;
+				}
+				number++;
+				a++;
+			}
+			y++;
+			dir = Dir::Down;
+			break;
+		}
+		cnt--;
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (v[i][j] != 0)
+			{
+				answer.push_back(v[i][j]);
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+
+
+	return answer;
+}
+
+#pragma endregion
+
+#pragma region 영어끝말잇기
+bool IsUsed(string s, vector<string>& used)
+{
+	for (int i = 0; i < used.size(); i++)
+	{
+		if (s == used[i])
+			return true;
+	}
+	return false;
+}
+
+vector<int> 영어끝말잇기(int n, vector<string> words) {
+	vector<int> answer;
+
+	int arr[100] = { 0, };
+
+	int num = 0;
+	bool b = false;
+	char w = words[0][0];
+	vector<string> used;
+
+	for (int i = 0; i < words.size(); i++)
+	{
+		arr[num]++;
+		if (words[i][0] != w || IsUsed(words[i], used))
+		{
+			b = true;
+			answer.push_back(num + 1);
+			answer.push_back(arr[num]);
+			break;
+		}
+		used.push_back(words[i]);
+		w = words[i][words[i].length() - 1];
+		num += 1;
+		num %= n;
+	}
+
+	if (!b)
+	{
+		answer.clear();
+		answer.push_back(0);
+		answer.push_back(0);
+	}
+
+	return answer;
+}
+#pragma endregion
+
+#pragma region 주식가격
+vector<int> 주식가격(vector<int> prices) {
+	vector<int> answer;
+	for (int i = 0; i < prices.size(); i++)
+	{
+		if (i == prices.size() - 1)
+		{
+			answer.push_back(0);
+			break;
+		}
+
+		int price = prices[i];
+		int cnt = 0;
+		for (int j = i + 1; j < prices.size(); j++)
+		{
+			cnt++;
+
+			if (prices[j] < prices[i])
+			{
+				break;
+			}
+		}
+		answer.push_back(cnt);
+	}
+
+	return answer;
+}
+#pragma endregion
