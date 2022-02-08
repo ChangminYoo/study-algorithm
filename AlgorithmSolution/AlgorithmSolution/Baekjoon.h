@@ -418,3 +418,113 @@ int Z(int n, int r, int c)
 	}
 }
 #pragma endregion
+
+
+// string
+#pragma region 1157
+int arr[26];
+
+void 단어공부(string s)
+{
+	string answer;
+	for (int i = 0; i < s.length(); i++)
+	{
+		s[i] = toupper(s[i]);
+	}
+
+
+	for (int i = 0; i < s.length(); i++)
+	{
+		arr[s[i] - 'A']++;
+	}
+
+	int m = -1;
+	for (int i = 0; i < 26; i++)
+	{
+		if (m < arr[i])
+		{
+			m = arr[i];
+			answer = 'A' + i;
+		}
+		else if (m == arr[i])
+		{
+			answer = "?";
+		}
+	}
+
+	cout << answer;
+}
+
+#pragma endregion
+
+#pragma region 1152
+//int 단어의개수()
+//{
+//	string s;
+//	getline(cin, s);
+//
+//	stringstream ss(s);
+//	string sbuffer;
+//	vector<string> v;
+//
+//	while (getline(ss, sbuffer, ' '))
+//	{
+//		if (sbuffer != "")
+//		{
+//			v.push_back(sbuffer);
+//		}
+//	}
+//
+//	return v.size();
+//}
+#pragma endregion
+
+#pragma region 1613
+bool 그룹단어체커(string s)
+{
+	for (int i = 0; i < s.length(); i++)
+	{
+		int j = i;
+		while (s[i] == s[j])
+		{
+			j++;
+			if (j >= s.length()) break;
+		}
+
+		while (j < s.length())
+		{
+			if (s[i] == s[j])
+				return false;
+			j++;
+		}
+
+	}
+
+	return true;
+}
+#pragma endregion
+
+
+// etc
+#pragma region 2292
+void BeeHouse(long long n)
+{
+	if (n == 1)
+	{
+		cout << 1;
+		return;
+	}
+
+	int room = 0;
+	int num = 2;
+	int mul = 6;
+
+	while (num <= n)
+	{
+		num += mul * room;
+		room++;
+	}
+
+	cout << room;
+}
+#pragma endregion
