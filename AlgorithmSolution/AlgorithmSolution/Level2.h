@@ -1030,3 +1030,54 @@ vector<int> 주식가격(vector<int> prices) {
 	return answer;
 }
 #pragma endregion
+
+#pragma region 전화번호목록
+bool 전화번호목록(vector<string> phone_book) 
+{
+	bool find = false;
+	sort(phone_book.begin(), phone_book.end());
+	for (int i = 0; i < phone_book.size() - 1; i++)
+	{
+		string prefix = phone_book[i];
+		string next = phone_book[i + 1].substr(0, prefix.length());
+		if (prefix == next)
+		{
+			find = true;
+			break;
+		}
+	}
+
+	return !find;
+}
+
+#pragma endregion
+
+#pragma region 더맵게
+int 더맵게(vector<int> scoville, int K) {
+	int answer = 0;
+	int front = 0;
+	int second = 0;
+	priority_queue<int, vector<int>, greater<int>> pq(scoville.begin(), scoville.end());
+
+	while (!pq.empty())
+	{
+		front = pq.top();
+		pq.pop();
+
+		if (front >= K) break;
+		if (pq.empty())
+		{
+			answer = -1;
+			break;
+		}
+
+		second = pq.top();
+		pq.push(front + second * 2);
+		pq.pop();
+
+		answer++;
+	}
+
+	return answer;
+}
+#pragma endregion

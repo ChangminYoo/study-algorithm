@@ -1,9 +1,9 @@
-//#include "Level2.h"
-#include "Baekjoon.h"
-#include <bits/stdc++.h>
-#include<unordered_map>
-using namespace std;
+#pragma once
+#include "Level2.h"
 
+//////////////level 3///////////////////
+
+#pragma region 단어변환
 map<string, int> m;
 bool Check(string current, string next)
 {
@@ -27,7 +27,7 @@ int BFS(string current, string target, vector<string>& words)
 {
     queue<string> q;
     q.push(current);
-    
+
     while (!q.empty())
     {
         string front = q.front();
@@ -50,7 +50,7 @@ int BFS(string current, string target, vector<string>& words)
             if (!Check(words[i], front)) continue;
 
             q.push(words[i]);
-           
+
             if (m[words[i]] <= prev)
             {
                 m[words[i]] = prev + 1;
@@ -61,7 +61,7 @@ int BFS(string current, string target, vector<string>& words)
     return m[target];
 }
 
-int solution(string begin, string target, vector<string> words) {
+int 단어변환(string begin, string target, vector<string> words) {
     int answer = 0;
 
     for (int i = 0; i < words.size(); i++)
@@ -72,8 +72,38 @@ int solution(string begin, string target, vector<string> words) {
     answer = BFS(begin, target, words);
     return answer;
 }
+#pragma endregion
 
-int main(void)
+#pragma region 네트워크
+bool visited[201] = { false, };
+void DFS(int start, vector<vector<int>>& computers)
 {
-    cout << solution("hit", "cog", { "hot", "dot", "dog", "lot", "log", "cog" });
+    visited[start] = true;
+
+    for (int i = 0; i < computers.size(); i++)
+    {
+        if (computers[start][i] == 1)
+        {
+            if (visited[i] == false)
+            {
+                DFS(i, computers);
+            }
+        }
+    }
 }
+
+int 네트워크(int n, vector<vector<int>> computers) {
+    int answer = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (!visited[i])
+        {
+            DFS(i, computers);
+            answer++;
+        }
+    }
+    return answer;
+}
+#pragma endregion
+
+
