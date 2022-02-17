@@ -505,6 +505,184 @@ bool 그룹단어체커(string s)
 #pragma endregion
 
 
+// math
+#pragma region 9092
+void 골드바흐()
+{
+	vector<int> v;
+	int N;
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		int m = 0;
+		cin >> m;
+		v.push_back(m);
+	}
+
+	vector<bool> arr(10001, false);
+	arr[1] = true;
+	for (int i = 2; i <= 10000; i++)
+	{
+		if (arr[i]) continue;
+
+		for (int j = i + i; j <= 10000; j += i)
+		{
+			arr[j] = true;
+		}
+	}
+
+	for (int i = 0; i < v.size(); i++)
+	{
+		for (int j = v[i] / 2; j > 0; j--)
+		{
+			if (!arr[j] && !arr[v[i] - j])
+			{
+				cout << j << " " << v[i] - j << "\n";
+				break;
+			}
+		}
+	}
+}
+#pragma endregion
+
+#pragma region 2869
+void 달팽이는올라가고싶다(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int A, B, V;
+	cin >> A >> B >> V;
+
+	int day = 0;
+	if ((V - B) % (A - B) != 0)
+	{
+		day = (V - B) / (A - B) + 1;
+	}
+	else
+	{
+		day = (V - B) / (A - B);
+	}
+
+	cout << day << endl;
+}
+#pragma endregion
+
+// backTracking
+#pragma region 15649
+//int N = 0;
+//int M = 0;
+//vector<int> number;
+//bool isUsed[9] = { false, };
+//void NAndM()
+//{
+//	if (number.size() == M)
+//	{
+//		for (int i = 0; i < M; i++)
+//		{
+//			cout << number[i] << " ";
+//		}
+//		cout << "\n";
+//	}
+//
+//	for (int i = 1; i <= N; i++)
+//	{
+//		if (isUsed[i]) continue;
+//
+//		isUsed[i] = true;
+//		number.push_back(i);
+//
+//		NAndM();
+//
+//		isUsed[i] = false;
+//		number.pop_back();
+//	}
+//
+//}
+#pragma endregion
+
+#pragma region 9663
+//int N;
+//int answer;
+//int visited[15];
+//
+//bool Check(int col)
+//{
+//	for (int i = 0; i < col; i++)
+//	{
+//		if (visited[i] == visited[col] || col - i == abs(visited[col] - visited[i]))
+//		{
+//			return false;
+//		}
+//	}
+//	return true;
+//}
+//
+//void NQueen(int cnt)
+//{
+//	if (cnt == N)
+//	{
+//		answer++;
+//		return;
+//	}
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		visited[cnt] = i;
+//		if (Check(cnt))
+//		{
+//			NQueen(cnt + 1);
+//		}
+//	}
+//}
+#pragma endregion
+
+#pragma region 14888
+//vector<int> cal(4);
+//vector<int> v;
+//bool isUsed[101] = { false, };
+//vector<int> r;
+//void Func(int cnt, int result)
+//{
+//	if (cnt == v.size())
+//	{
+//		r.push_back(result);
+//		return;
+//	}
+//
+//	for (int j = 0; j < 4; j++)
+//	{
+//		if (cal[j] <= 0) continue;
+//
+//		int prev = result;
+//		if (j == 0)
+//		{
+//			result += v[cnt];
+//		}
+//		else if (j == 1)
+//		{
+//			result -= v[cnt];
+//		}
+//		else if (j == 2)
+//		{
+//			result *= v[cnt];
+//		}
+//		else
+//		{
+//			result /= v[cnt];
+//		}
+//		cal[j]--;
+//		isUsed[v[cnt]] = true;
+//		Func(cnt + 1, result);
+//
+//		isUsed[v[cnt]] = false;
+//		cal[j]++;
+//		result = prev;
+//	}
+//}
+
+#pragma endregion
+
 // etc
 #pragma region 2292
 void BeeHouse(long long n)
