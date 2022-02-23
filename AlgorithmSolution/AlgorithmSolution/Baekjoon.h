@@ -683,6 +683,211 @@ void 달팽이는올라가고싶다(void)
 
 #pragma endregion
 
+#pragma region 14889
+//vector<int> state[20];
+//vector<int> total;
+//bool isUsed[20] = { false, };
+//int N;
+//void StartAndLink(int num, int start)
+//{
+//	if (num == N / 2)
+//	{
+//		int t1 = 0;
+//		int t2 = 0;
+//
+//		for (int i = 0; i < N; i++)
+//		{
+//			if (isUsed[i])
+//			{
+//				for (int j = 0; j < state[i].size(); j++)
+//				{
+//					if (isUsed[j])
+//					{
+//						t1 += state[i][j];
+//					}
+//				}
+//			}
+//			else
+//			{
+//				for (int j = 0; j < state[i].size(); j++)
+//				{
+//					if (!isUsed[j])
+//					{
+//						t2 += state[i][j];
+//					}
+//				}
+//			}
+//		}
+//
+//		total.push_back(abs(t1 - t2));
+//		return;
+//	}
+//
+//	for (int i = start; i < N; i++)
+//	{
+//		if (isUsed[i]) continue;
+//
+//		isUsed[i] = true;
+//		num += 1;
+//		Sol(num, i);
+//		isUsed[i] = false;
+//		num -= 1;
+//	}
+//}
+#pragma endregion
+
+#pragma region 6603
+
+//int k;
+//vector<int> v;
+//vector<vector<int>> ss;
+//bool isUsed[50] = { false, };
+//void Lotto(vector<int>& s, int start)
+//{
+//	if (s.size() == 6)
+//	{
+//		ss.push_back(s);
+//		return;
+//	}
+//
+//	for (int i = start; i < v.size(); i++)
+//	{
+//		if (isUsed[v[i]]) continue;
+//
+//		isUsed[v[i]] = true;
+//		s.push_back(v[i]);
+//		Lotto(s, i);
+//		isUsed[v[i]] = false;
+//		s.pop_back();
+//	}
+//}
+//
+//int main(void)
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//
+//	while (1)
+//	{
+//		cin >> k;
+//		if (k == 0) break;
+//
+//		v.clear();
+//		fill(isUsed, isUsed + 50, false);
+//		for (int i = 0; i < k; i++)
+//		{
+//			int n;
+//			cin >> n;
+//			v.push_back(n);
+//		}
+//		vector<int> s;
+//		Lotto(s, 0);
+//		ss.push_back({ -1, -1 });
+//	}
+//
+//
+//	for (int i = 0; i < ss.size(); i++)
+//	{
+//		for (int j = 0; j < ss[i].size(); j++)
+//		{
+//			if (ss[i][j] == -1) break;
+//			cout << ss[i][j] << " ";
+//		}
+//		cout << "\n";
+//	}
+//
+//}
+#pragma endregion
+
+#pragma region 1759
+//int L, C;
+//vector<char> v;
+//map<char, int> m;
+//bool isUsed[26] = { false, };
+//
+//bool CheckJaoumCount(vector<char>& c)
+//{
+//	int cnt = 0;
+//	for (int i = 0; i < c.size(); i++)
+//	{
+//		if (c[i] != 'a' && c[i] != 'e' && c[i] != 'i' && c[i] != 'o' && c[i] != 'u')
+//		{
+//			cnt++;
+//		}
+//	}
+//
+//	if (cnt >= 2)
+//		return true;
+//
+//	return false;
+//}
+//
+//void Sol(vector<char>& c, int start)
+//{
+//	if (c.size() == L)
+//	{
+//		if (m['a'] <= 0 && m['e'] <= 0 && m['i'] <= 0 && m['o'] <= 0 && m['u'] <= 0)
+//			return;
+//		if (!CheckJaoumCount(c)) return;
+//
+//		for (int i = 0; i < c.size(); i++)
+//		{
+//			cout << c[i];
+//		}
+//		cout << "\n";
+//		return;
+//	}
+//
+//	for (int i = start; i < v.size(); i++)
+//	{
+//		if (isUsed[v[i] - 'a']) continue;
+//
+//		auto iter = m.find(v[i]);
+//		if (iter != m.end())
+//		{
+//			(*iter).second += 1;
+//		}
+//
+//		isUsed[v[i] - 'a'] = true;
+//		c.push_back(v[i]);
+//		Sol(c, i);
+//		c.pop_back();
+//		isUsed[v[i] - 'a'] = false;
+//
+//		if (iter != m.end())
+//		{
+//			(*iter).second -= 1;
+//		}
+//	}
+//}
+//
+//int main(void)
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//	cin >> L >> C;
+//
+//	m.insert({ 'a', 0 });
+//	m.insert({ 'e', 0 });
+//	m.insert({ 'i', 0 });
+//	m.insert({ 'o', 0 });
+//	m.insert({ 'u', 0 });
+//
+//	for (int i = 0; i < C; i++)
+//	{
+//		char c;
+//		cin >> c;
+//		v.push_back(c);
+//	}
+//
+//	sort(v.begin(), v.end());
+//	vector<char> c;
+//	Sol(c, 0);
+//
+//}
+#pragma endregion
+
+
 // etc
 #pragma region 2292
 void BeeHouse(long long n)
