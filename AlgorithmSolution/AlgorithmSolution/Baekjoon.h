@@ -887,6 +887,111 @@ void 달팽이는올라가고싶다(void)
 //}
 #pragma endregion
 
+// DP
+#pragma region 1463
+//int main(void)
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//	cin >> N;
+//
+//	v[1] = 0;
+//	for (int i = 2; i <= N; i++)
+//	{
+//		v[i] = v[i - 1] + 1;
+//		if (i % 3 == 0)
+//		{
+//			v[i] = min(v[i / 3] + 1, v[i]);
+//		}
+//		else if (i % 2 == 0)
+//		{
+//			v[i] = min(v[i / 2] + 1, v[i]);
+//		}
+//	}
+//	cout << v[N];
+//}
+
+#pragma endregion
+
+#pragma region 1003
+//vector<int> fibo(100);
+//vector<pair<int, int>> v(100);
+//int main(void)
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//	cin >> N;
+//
+//	fibo[0] = fibo[1] = 1;
+//	v[0] = { 1, 0 };
+//	v[1] = { 0, 1 };
+//	for (int i = 2; i <= 40; i++)
+//	{
+//		fibo[i] = fibo[i - 1] + fibo[i - 2];
+//		v[i] = { v[i - 1].first + v[i - 2].first, v[i - 1].second + v[i - 2].second };
+//	}
+//
+//	vector<pair<int, int>> answer;
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		int n;
+//		cin >> n;
+//		answer.push_back({ v[n].first, v[n].second });
+//	}
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		cout << answer[i].first << " " << answer[i].second << "\n";
+//	}
+//}
+#pragma endregion
+
+#pragma region 9095
+//void Func(int sum, int target)
+//{
+//	if (sum == target)
+//	{
+//		cnt++;
+//		return;
+//	}
+//
+//	if (sum + 1 <= target)
+//	{
+//		Func(sum + 1, target);
+//	}
+//	if (sum + 2 <= target)
+//	{
+//		Func(sum + 2, target);
+//	}
+//	if (sum + 3 <= target)
+//	{
+//		Func(sum + 3, target);
+//	}
+//}
+#pragma endregion
+
+#pragma region 11726
+//int N;
+//int main(void)
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//	cin >> N;
+//
+//	vector<int> v(1001);
+//	v[1] = 1;
+//	v[2] = 2;
+//	int cnt = 1;
+//	for (int i = 3; i <= N; i++)
+//	{
+//		v[i] = (v[i - 1] + v[i - 2]) % 10007;
+//	}
+//
+//	cout << v[N];
+//}
+#pragma endregion
+
 
 // etc
 #pragma region 2292
