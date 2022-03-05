@@ -992,6 +992,69 @@ void 달팽이는올라가고싶다(void)
 //}
 #pragma endregion
 
+#pragma region 1149
+//int N;
+//vector<vector<int>> cost;
+//int main(void)
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//	cin >> N;
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		int r, g, b;
+//		cin >> r >> g >> b;
+//		cost.push_back({ r,g,b });
+//	}
+//
+//	vector<vector<int>> v(1000, { 0,0,0 });
+//	v[0][0] = cost[0][0];
+//	v[0][1] = cost[0][1];
+//	v[0][2] = cost[0][2];
+//	for (int i = 1; i < N; i++)
+//	{
+//		v[i][0] = min(v[i - 1][1], v[i - 1][2]) + cost[i][0];
+//		v[i][1] = min(v[i - 1][0], v[i - 1][2]) + cost[i][1];
+//		v[i][2] = min(v[i - 1][0], v[i - 1][1]) + cost[i][2];
+//	}
+//
+//	cout << *min_element(v[N - 1].begin(), v[N - 1].end());
+//}
+#pragma endregion
+
+#pragma region 2579
+//int main(void)
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//	int N;
+//	cin >> N;
+//
+//	vector<int> stair;
+//	for (int i = 0; i < N; i++)
+//	{
+//		int n;
+//		cin >> n;
+//		stair.push_back(n);
+//	}
+//
+//	vector<int> v(N);
+//	v[0] = stair[0];
+//	v[1] = max(stair[0] + stair[1], stair[1]);
+//	v[2] = max(stair[0] + stair[2], stair[1] + stair[2]);
+//	for (int i = 3; i < N; i++)
+//	{
+//		int next1 = v[i - 3] + stair[i - 1] + stair[i];
+//		int next2 = v[i - 2] + stair[i];
+//		v[i] = max(next1, next2);
+//	}
+//
+//	cout << v[N - 1];
+//}
+#pragma endregion
+
+
 
 // etc
 #pragma region 2292
