@@ -327,6 +327,121 @@ using namespace std;
 //}
 #pragma endregion
 
+#pragma region 14502
+//vector<vector<int>> v(8);
+//vector<pair<int, int>> wall;
+//vector<pair<int, int>> virus;
+//int N, M;
+//bool visited[8][8] = { false, };
+//int dx[4] = { 1, 0, -1 ,0 };
+//int dy[4] = { 0, 1, 0, -1 };
+//int answer = 0;
+//
+//int BFS(vector<vector<int>> cv)
+//{
+//	queue<pair<int, int>> q;
+//	for (int i = 0; i < virus.size(); i++)
+//	{
+//		int x = virus[i].first;
+//		int y = virus[i].second;
+//		q.push({ x, y });
+//		visited[x][y] = true;
+//	}
+//
+//	while (!q.empty())
+//	{
+//		int x = q.front().first;
+//		int y = q.front().second;
+//		q.pop();
+//
+//		for (int i = 0; i < 4; i++)
+//		{
+//			int nextX = x + dx[i];
+//			int nextY = y + dy[i];
+//
+//			if (nextX < 0 || nextX >= N || nextY < 0 || nextY >= M) continue;
+//			if (visited[nextX][nextY]) continue;
+//			if (cv[nextX][nextY] == 0)
+//			{
+//				visited[nextX][nextY] = true;
+//				cv[nextX][nextY] = 2;
+//				q.push({ nextX, nextY });
+//			}
+//		}
+//	}
+//
+//	int count = 0;;
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = 0; j < M; j++)
+//		{
+//			if (cv[i][j] == 0)
+//			{
+//				count++;
+//			}
+//		}
+//	}
+//	return count;
+//}
+//
+//void MakeWall(int index, int wallCount)
+//{
+//	if (wallCount == 3)
+//	{
+//		for (int i = 0; i < 8; i++)
+//		{
+//			for (int j = 0; j < 8; j++)
+//			{
+//				visited[i][j] = false;
+//			}
+//		}
+//
+//		answer = max(answer, BFS(v));
+//		return;
+//	}
+//
+//	for (int i = index; i < wall.size(); i++)
+//	{
+//		int x = wall[i].first;
+//		int y = wall[i].second;
+//
+//		v[x][y] = 1;
+//		MakeWall(i + 1, wallCount + 1);
+//		v[x][y] = 0;
+//	}
+//}
+//
+//int main(void)
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//	cin >> N >> M;
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = 0; j < M; j++)
+//		{
+//			int n;
+//			cin >> n;
+//			v[i].push_back(n);
+//
+//			if (n == 0)
+//			{
+//				wall.push_back({ i,j });
+//			}
+//			else if (n == 2)
+//			{
+//				virus.push_back({ i, j });
+//			}
+//		}
+//	}
+//
+//	MakeWall(0, 0);
+//	cout << answer;
+//}
+#pragma endregion
+
+
 // Greedy
 #pragma region 11399
 //int main()
