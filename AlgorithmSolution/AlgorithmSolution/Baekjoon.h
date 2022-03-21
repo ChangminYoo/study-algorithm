@@ -441,6 +441,91 @@ using namespace std;
 //}
 #pragma endregion
 
+#pragma region 4963
+//int w = -1;
+//int h = -1;
+//vector<vector<int>> Map(50);
+//vector<pair<int, int>> land;
+//bool visited[50][50];
+//int dx[8] = { 1, 0, -1, 0, 1, 1, -1, -1 };
+//int dy[8] = { 0, 1, 0, -1, 1, -1, -1, 1 };
+//void BFS(int x, int y)
+//{
+//	queue<pair<int, int>> q;
+//	q.push({ y, x });
+//
+//	visited[y][x] = true;
+//
+//	while (!q.empty())
+//	{
+//		int x = q.front().second;
+//		int y = q.front().first;
+//		q.pop();
+//
+//		for (int i = 0; i < 8; i++)
+//		{
+//			int nextX = x + dx[i];
+//			int nextY = y + dy[i];
+//
+//			if (nextX < 0 || nextX >= w || nextY < 0 || nextY >= h) continue;
+//			if (visited[nextY][nextX]) continue;
+//			if (Map[nextY][nextX] == 0) continue;
+//
+//			visited[nextY][nextX] = true;
+//			q.push({ nextY, nextX });
+//		}
+//	}
+//}
+//
+//int main(void)
+//{
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
+//
+//	vector<int> answer;
+//	while (true)
+//	{
+//		cin >> w >> h;
+//		if (w == 0 && h == 0) break;
+//
+//		int cnt = 0;
+//		land.clear();
+//		for (int i = 0; i < h; i++)
+//		{
+//			Map[i].clear();
+//			for (int j = 0; j < w; j++)
+//			{
+//				int n;
+//				cin >> n;
+//
+//				visited[i][j] = false;
+//				Map[i].push_back(n);
+//				if (n == 1)
+//				{
+//					land.push_back({ j, i });
+//				}
+//			}
+//		}
+//
+//		for (int i = 0; i < land.size(); i++)
+//		{
+//			if (!visited[land[i].second][land[i].first])
+//			{
+//				BFS(land[i].first, land[i].second);
+//				cnt++;
+//			}
+//		}
+//
+//		answer.push_back(cnt);
+//	}
+//
+//	for (int i = 0; i < answer.size(); i++)
+//	{
+//		cout << answer[i] << "\n";
+//	}
+//}
+#pragma endregion
+
 
 // Greedy
 #pragma region 11399
