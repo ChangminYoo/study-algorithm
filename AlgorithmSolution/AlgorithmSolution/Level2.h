@@ -1081,3 +1081,43 @@ int 더맵게(vector<int> scoville, int K) {
 	return answer;
 }
 #pragma endregion
+
+#pragma region 문자열압축
+int 문자열압축(string s)
+{
+	int answer = s.length();
+	int n = s.length() / 2;
+
+	for (int i = 1; i <= n; i++)
+	{
+		string t1 = s.substr(0, i);
+		string newString;
+		int cnt = 1;
+		for (int j = i; j <= s.length(); j += i)
+		{
+			if (t1 == s.substr(j, i))
+			{
+				cnt++;
+			}
+			else
+			{
+				if (cnt > 1)
+				{
+					newString += to_string(cnt);
+				}
+				newString += t1;
+				t1 = s.substr(j, i);
+				cnt = 1;
+			}
+		}
+
+		if (s.length() % i != 0)
+		{
+			newString += s.substr((s.length() / i) * i);
+		}
+		answer = max(answer, (int)newString.length());
+	}
+	return answer;
+}
+
+#pragma endregion
