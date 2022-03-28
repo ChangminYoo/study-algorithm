@@ -1,6 +1,7 @@
 #pragma once
 #include<bits/stdc++.h>
 #include<unordered_set>
+#include <unordered_map>
 using namespace std;
 
 //////////////level 2///////////////////
@@ -1120,4 +1121,146 @@ int 문자열압축(string s)
 	return answer;
 }
 
+#pragma endregion
+
+#pragma region 오픈채팅방
+vector<string> Split(string s)
+{
+	istringstream iss(s);
+	string buffer;
+	vector<string> v;
+
+	while (getline(iss, buffer, ' '))
+	{
+		v.push_back(buffer);
+	}
+
+	return v;
+}
+
+vector<string> 오픈채팅방(vector<string> record) {
+	vector<string> answer;
+	vector<string> state;
+	unordered_map <string, string> m;
+
+	for (int i = 0; i < record.size(); i++)
+	{
+		vector<string> v = Split(record[i]);
+		string command = v[0];
+		string id = v[1];
+
+		if (command == "Enter")
+		{
+			string name = v[2];
+			m[id] = name;
+			state.push_back("님이 들어왔습니다.");
+
+			answer.push_back(id);
+		}
+		else if (command == "Leave")
+		{
+			state.push_back("님이 나갔습니다.");
+			answer.push_back(id);
+		}
+		else
+		{
+			string name = v[2];
+			m[id] = name;
+		}
+	}
+
+	for (int i = 0; i < answer.size(); i++)
+	{
+		answer[i] = m[answer[i]] + state[i];
+	}
+	return answer;
+}
+#pragma endregion
+
+#pragma region 카카오프렌즈컬러링북
+bool cvisited[100][100] = { false, };
+int dx[4] = { 1, 0, -1, 0 };
+int dy[4] = { 0, 1, 0, -1 };
+int N = 0;
+int M = 0;
+
+void Init(int m, int n)
+{
+	N = n;
+	M = m;
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			cvisited[j][i] = false;
+		}
+	}
+}
+
+int BFS(int n, int x, int y, vector<vector<int>>& picture, map<int, int>& color)
+{
+	int place = 1;
+	queue<pair<int, int>> q;
+
+	q.push({ x,y });
+	cvisited[x][y] = true;
+
+	while (!q.empty())
+	{
+		int cx = q.front().first;
+		int cy = q.front().second;
+		q.pop();
+
+		for (int i = 0; i < 4; i++)
+		{
+			int nextX = cx + dx[i];
+			int nextY = cy + dy[i];
+
+			if (nextX < 0 || nextX >= N || nextY < 0 || nextY >= M) continue;
+			if (cvisited[nextX][nextY]) continue;
+			if (picture[nextY][nextX] != n) continue;
+
+			q.push({ nextX, nextY });
+			cvisited[nextX][nextY] = true;
+			place++;
+		}
+	}
+
+	return place;
+}
+
+vector<int> 카카오프렌즈컬러링북(int m, int n, vector<vector<int>> picture) {
+	int number_of_area = 0;
+	int max_size_of_one_area = 0;
+
+	Init(m, n);
+
+	map<int, int> color;
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			int n = picture[i][j];
+			if (n != 0)
+			{
+				if (cvisited[j][i] == false)
+				{
+					color[n] = max(color[n], BFS(n, j, i, picture, color));
+					number_of_area++;
+				}
+			}
+		}
+	}
+
+	for (const auto& i : color)
+	{
+		max_size_of_one_area = max(max_size_of_one_area, i.second);
+	}
+
+	vector<int> answer(2);
+	answer[0] = number_of_area;
+	answer[1] = max_size_of_one_area;
+	return answer;
+}
 #pragma endregion
