@@ -1264,3 +1264,24 @@ vector<int> 카카오프렌즈컬러링북(int m, int n, vector<vector<int>> picture) {
 	return answer;
 }
 #pragma endregion
+
+#pragma region 멀쩡한사각형
+long long rec(int w, int h)
+{
+	if (h % w == 0)
+	{
+		return w;
+	}
+	else
+	{
+		return rec(h % w, w);
+	}
+}
+
+long long 멀쩡한사각형(int w, int h) {
+	long long answer = 1;
+	long long rect = (long long)w * (long long)h;
+	answer = rect - (w + h - rec(w, h));
+	return answer;
+}
+#pragma endregion
