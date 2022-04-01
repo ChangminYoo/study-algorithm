@@ -1285,3 +1285,47 @@ long long 멀쩡한사각형(int w, int h) {
 	return answer;
 }
 #pragma endregion
+
+#pragma region 124나라
+string /*124*/나라(int n) {
+	string answer = "";
+
+	while (n > 0)
+	{
+		if (n % 3 == 0)
+		{
+			answer += "4";
+			n = (n / 3) - 1;
+		}
+		else
+		{
+			answer += to_string(n % 3);
+			n = n / 3;
+		}
+	}
+
+	reverse(answer.begin(), answer.end());
+	return answer;
+}
+#pragma endregion
+
+#pragma region 짝지어제거하기
+int 짝지어제거하기(string s)
+{
+	stack<char> st;
+
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (st.empty() || st.top() != s[i])
+		{
+			st.push(s[i]);
+		}
+		else
+		{
+			st.pop();
+		}
+	}
+
+	return st.empty() ? 1 : 0;
+}
+#pragma endregion
