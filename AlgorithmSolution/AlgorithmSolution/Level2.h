@@ -1329,3 +1329,114 @@ int 짝지어제거하기(string s)
 	return st.empty() ? 1 : 0;
 }
 #pragma endregion
+
+#pragma region 괄호변환
+bool IsRightString(string s)
+{
+	stack<char> st;
+	if (s.length() > 0 && s[0] == ')') return false;
+
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (st.empty())
+		{
+			st.push(s[i]);
+		}
+		else
+		{
+			if (st.top() == '(')
+			{
+				if (s[i] == ')')
+				{
+					st.pop();
+				}
+				else
+				{
+					st.push(s[i]);
+				}
+			}
+			else
+			{
+				st.push(s[i]);
+			}
+		}
+	}
+	return st.empty();
+}
+
+void Divide(string p, string& u, string& v)
+{
+	if (p == "") return;
+
+	int leftCnt = 0; // (
+	int rightCnt = 0; // )
+	for (int i = 0; i < p.length(); i++)
+	{
+		if (p[i] == '(')
+		{
+			leftCnt++;
+			u += p[i];
+		}
+		else
+		{
+			rightCnt++;
+			u += p[i];
+		}
+
+		if (leftCnt > 0 && rightCnt > 0 && leftCnt == rightCnt)
+		{
+			for (int j = i + 1; j < p.length(); j++)
+			{
+				v += p[j];
+			}
+			break;
+		}
+	}
+}
+
+string Convert(string p)
+{
+	string u, v;
+	if (p == "")
+	{
+		return "";
+	}
+	Divide(p, u, v);
+
+	if (IsRightString(u))
+	{
+		return u + Convert(v);
+	}
+	else
+	{
+		string temp;
+		temp = "(" + Convert(v) + ")";
+		string nu = u.substr(1, u.length() - 2);
+		string n2;
+		for (int i = 0; i < nu.length(); i++)
+		{
+			if (nu[i] == '(')
+			{
+				n2 += ")";
+			}
+			else
+			{
+				n2 += "(";
+			}
+		}
+
+		temp += n2;
+		return temp;
+	}
+}
+
+string 괄호변환(string p) {
+	string answer = "";
+	if (p.length() <= 0) return answer;
+	if (IsRightString(p)) return p;
+
+	answer = Convert(p);
+
+	return answer;
+}
+#pragma endregion
