@@ -1440,3 +1440,92 @@ string 괄호변환(string p) {
 	return answer;
 }
 #pragma endregion
+
+#pragma region 뉴스클러스터링
+int 뉴스클러스터링(string str1, string str2) {
+	double answer = 0;
+	vector<string> v1;
+	vector<string> v2;
+
+	for (int i = 0; i < str1.size(); i++)
+	{
+		str1[i] = tolower(str1[i]);
+	}
+	for (int j = 0; j < str2.size(); j++)
+	{
+		str2[j] = tolower(str2[j]);
+	}
+
+	for (int i = 0; i < str1.size() - 1; i++)
+	{
+		string t;
+		t = str1.substr(i, 2);
+		bool flag = false;
+		for (int j = 0; j < 2; j++)
+		{
+			if (t[j] >= 'a' && t[j] <= 'z')
+			{
+				flag = true;
+			}
+			else
+			{
+				flag = false;
+				break;
+			}
+		}
+		if (flag)
+		{
+			v1.push_back(t);
+		}
+	}
+
+	for (int j = 0; j < str2.size() - 1; j++)
+	{
+		string t;
+		t = str2.substr(j, 2);
+		bool flag = false;
+		for (int k = 0; k < 2; k++)
+		{
+			if (t[k] >= 'a' && t[k] <= 'z')
+			{
+				flag = true;
+			}
+			else
+			{
+				flag = false;
+				break;
+			}
+		}
+		if (flag)
+		{
+			v2.push_back(t);
+		}
+	}
+
+	if (v1.size() == 0 && v2.size() == 0)
+	{
+		answer = 1;
+	}
+	else
+	{
+		int b = 0;
+		int t = v1.size() + v2.size();
+
+		for (int i = 0; i < v1.size(); i++)
+		{
+			auto iter = find(v2.begin(), v2.end(), v1[i]);
+			if (iter != v2.end())
+			{
+				b++;
+				v2.erase(iter);
+			}
+		}
+		t -= b;
+
+		answer = static_cast<double>(b) / static_cast<double>(t);
+	}
+
+	return static_cast<int>(answer * 65536);
+}
+#pragma endregion
+

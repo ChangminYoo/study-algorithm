@@ -1279,3 +1279,131 @@ void BeeHouse(long long n)
 	cout << room;
 }
 #pragma endregion
+
+
+#pragma region AceProject
+//int solution1(int n, vector<int> v)
+//{
+//    int answer = 0;
+//    int minimum = 0;
+//    int total = 0; // 오른쪽합
+//    int sum = 0; // 왼쪽합
+//    int subtract = 0;
+//
+//    for (auto i = v.begin(); i != v.end(); i++)
+//    {
+//        total += *i;
+//    }
+//    minimum = abs(total - sum);
+//
+//    for (int i = 0; i < v.size(); i++)
+//    {
+//        sum += v[i];
+//        total -= v[i];
+//        subtract = abs(total - sum);
+//        if (subtract <= minimum)
+//        {            
+//            if (subtract == minimum)
+//            {
+//                answer = min(answer, i+1);
+//            }
+//            else
+//            {
+//                answer = i+1;
+//            }
+//            minimum = subtract;
+//        }
+//    }
+//
+//    return answer;
+//}
+
+//set<string> se;
+//void func(int current, int length, string temp, string s, vector<bool>& word)
+//{
+//	if (temp.length() == length)
+//	{
+//		se.insert(temp);
+//		return;
+//	}
+//
+//	for (int i = current; i < s.length(); i++)
+//	{
+//		if (word[i]) continue;
+//		string temp2;
+//
+//		temp2 = temp;
+//		temp += s[i];
+//		word[i] = true;
+//
+//		func(i, length, temp, s, word);
+//
+//		temp = temp2;
+//		word[i] = false;
+//	}
+//}
+//
+//string solution2(string s) {
+//	string answer = "";
+//	string temp;
+//	for (int i = 1; i <= s.length(); i++)
+//	{
+//		vector<bool> word(s.length(), false);
+//		func(0, i, temp, s, word);
+//	}
+//
+//	return answer;
+//}
+//
+//int solution3(int n, int maxhp, vector<int> times, vector<int> effects) {
+//	int answer = 0;
+//	int time = 0;
+//	int index = 0;
+//	int totalEffect = 0; // 효과 누적 합
+//	int curHp = 0; // 현재 hp
+//
+//	stack<int> s;
+//	while (index < n)
+//	{
+//		if (curHp >= maxhp)
+//		{
+//			answer++;
+//			curHp = maxhp;
+//		}
+//		else if (curHp <= 0)
+//		{
+//			answer++;
+//			curHp = 0;
+//		}
+//
+//		if (times[index] == time)
+//		{
+//			totalEffect += effects[index];
+//			index++;
+//		}
+//
+//		int n = ((times[index] - time) * totalEffect) - 10;
+//		if (n > 0)
+//		{
+//			if (n % totalEffect == 0)
+//			{
+//				n /= totalEffect;
+//			}
+//			else
+//			{
+//				n /= totalEffect;
+//				n++;
+//			}
+//			answer += n;
+//			time = times[index];
+//		}
+//		else
+//		{
+//			time++;
+//		}
+//		curHp += totalEffect;
+//	}
+//
+//	return answer;
+//}
+#pragma endregion
