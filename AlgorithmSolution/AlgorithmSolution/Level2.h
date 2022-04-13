@@ -1529,3 +1529,228 @@ int 뉴스클러스터링(string str1, string str2) {
 }
 #pragma endregion
 
+#pragma region 수식최대화
+void Check(vector<long long>& numbers2, vector<char>& operand2, vector<char> ra)
+{
+	int priority = 0;
+	while (!operand2.empty())
+	{
+		for (int j = 0; j < operand2.size(); j++)
+		{
+			if (operand2[j] == ra[priority])
+			{
+				if (operand2[j] == '*')
+				{
+					numbers2[j] = numbers2[j] * numbers2[j + 1];
+				}
+				else if (operand2[j] == '+')
+				{
+					numbers2[j] = numbers2[j] + numbers2[j + 1];
+				}
+				else
+				{
+					numbers2[j] = numbers2[j] - numbers2[j + 1];
+				}
+
+				operand2.erase(operand2.begin() + j);
+				numbers2.erase(numbers2.begin() + j + 1);
+				j--;
+			}
+		}
+		priority++;
+	}
+}
+
+long long 수식최대화(string expression) {
+	long long answer = 0;
+	vector<long long> numbers;
+	vector<char> operand;
+
+	string temp;
+	vector<char> ra;
+
+	for (int i = 0; i < expression.length(); i++)
+	{
+		if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*')
+		{
+			numbers.push_back(stoll(temp));
+			operand.push_back(expression[i]);
+			temp = "";
+			if (find(ra.begin(), ra.end(), expression[i]) == ra.end())
+			{
+				ra.push_back(expression[i]);
+			}
+		}
+		else
+		{
+			temp += expression[i];
+		}
+	}
+	numbers.push_back(stoll(temp));
+
+	vector<long long> numbers2;
+	vector<char> operand2;
+	sort(ra.begin(), ra.end());
+	do
+	{
+		numbers2 = numbers;
+		operand2 = operand;
+
+		Check(numbers2, operand2, ra);
+		answer = max(abs(numbers2[0]), answer);
+
+	} while (next_permutation(ra.begin(), ra.end()));
+
+	return answer;
+}
+
+#pragma endregion
+
+#pragma region 튜플
+bool 튜플cmp(const pair<int, int>& a, const pair<int, int>& b)
+{
+	if (a.second == b.second)
+	{
+		return a.first > b.first;
+	}
+	return a.second > b.second;
+}
+
+vector<int> 튜플(string s) {
+	vector<int> answer;
+	vector<vector<int>> elements;
+	map<int, int> count;
+
+	vector<int> v;
+	string temp;
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (s[i] == '{')
+		{
+		}
+		else
+		{
+			if (s[i] != ',')
+			{
+				if (s[i] == '}')
+				{
+					if (temp != "")
+					{
+						count[stoi(temp)]++;
+						v.push_back(stoi(temp));
+						temp = "";
+					}
+
+					if (v.size() > 0)
+					{
+						elements.push_back(v);
+					}
+					v.clear();
+				}
+				else
+				{
+					temp += s[i];
+				}
+			}
+			else
+			{
+				if (temp != "")
+				{
+					int n = stoi(temp);
+					count[n]++;
+					v.push_back(n);
+					temp = "";
+				}
+			}
+		}
+	}
+
+	vector<pair<int, int>> vv(count.begin(), count.end());
+	sort(vv.begin(), vv.end(), 튜플cmp);
+
+	for (const auto& iter : vv)
+	{
+		answer.push_back(iter.first);
+	}
+
+	return answer;
+}
+#pragma endregion
+
+#pragma region 메뉴리뉴얼
+void 메뉴리뉴얼dfs(unordered_map<string, int>& m, string order, vector<bool>& use, string s, int current, int target)
+{
+	if (s.length() == target)
+	{
+		m[s]++;
+		return;
+	}
+
+	for (int i = current; i < order.size(); i++)
+	{
+		if (use[i]) continue;
+
+		string temp = s;
+		s += order[i];
+		use[i] = true;
+
+		메뉴리뉴얼dfs(m, order, use, s, i, target);
+
+		s = temp;
+		use[i] = false;
+	}
+}
+
+bool 메뉴리뉴얼cmp(const pair<string, int>& a, const pair<string, int>& b)
+{
+	if (a.first.length() == b.first.length())
+	{
+		return a.second > b.second;
+	}
+	return a.first.length() < b.first.length();
+}
+
+vector<string> 메뉴리뉴얼(vector<string> orders, vector<int> course) {
+	vector<string> answer;
+	unordered_map<string, int> m;
+
+	for (int i = 0; i < course.size(); i++)
+	{
+		int count = course[i];
+
+		for (int j = 0; j < orders.size(); j++)
+		{
+			sort(orders[j].begin(), orders[j].end());
+			if (orders[j].length() < count) continue;
+
+			string currOrder = orders[j];
+			vector<bool> use(currOrder.length(), false);
+
+			메뉴리뉴얼dfs(m, currOrder, use, "", 0, count);
+		}
+	}
+
+	vector<pair<string, int>> vv(m.begin(), m.end());
+	sort(vv.begin(), vv.end(), 메뉴리뉴얼cmp);
+	for (int i = 0; i < course.size(); i++)
+	{
+		int count = course[i];
+		int biggest = 0;
+		for (int j = 0; j < vv.size(); j++)
+		{
+			if (count != vv[j].first.length()) continue;
+			if (vv[j].second == 1) continue;
+
+			if (vv[j].second >= biggest)
+			{
+				biggest = vv[j].second;
+				answer.push_back(vv[j].first);
+			}
+		}
+	}
+
+	sort(answer.begin(), answer.end());
+	return answer;
+}
+
+#pragma endregion
