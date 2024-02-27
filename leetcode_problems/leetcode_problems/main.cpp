@@ -12,5 +12,9 @@ int main(void)
 	//cout << solution.isPalindrome(120021);
 
 	// 13
-	cout << solution.romanToInt("MCMXCIV");
+	//cout << solution.romanToInt("LVIII");
+
+	// 14
+	vector<string> v = { "flower","flow","flight" };
+	cout << solution.longestCommonPrefix(v);
 }

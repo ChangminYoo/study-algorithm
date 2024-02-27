@@ -8,6 +8,7 @@
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
+#include <string>
 
 using namespace std;
 
@@ -66,23 +67,37 @@ public:
 			{'M', 1000}
 		};
 
-		int temp = 0;
-		for (int i = 0; i < s.size(); i++)
+		for (int i = 0; i < s.length(); i++)
 		{
-			char c = s[i];
-			
-			if (um[c] > temp && i > 0)
+			// 이전 값 보다 크면
+			if (um[s[i]] < um[s[i + 1]])
 			{
-				ret = um[c] - temp;
+				ret -= um[s[i]];
 			}
 			else
 			{
-				ret += um[c];
+				ret += um[s[i]];
 			}
-			temp = um[c];
 		}
 
 		return ret;
+	}
+#pragma endregion
+
+#pragma region Longest Common Prefix
+	string longestCommonPrefix(vector<string>& strs) {	
+		if (strs.empty()) return "";
+
+		string prefix = strs[0];
+		for (int i = 1; i < strs.size(); ++i)
+		{
+			while (strs[i].find(prefix) != 0)
+			{
+				prefix = prefix.substr(0, prefix.length() - 1);
+			}
+		}
+
+		return prefix;
 	}
 #pragma endregion
 };
