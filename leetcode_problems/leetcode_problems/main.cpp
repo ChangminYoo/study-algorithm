@@ -15,6 +15,15 @@ int main(void)
 	//cout << solution.romanToInt("LVIII");
 
 	// 14
-	vector<string> v = { "flower","flow","flight" };
-	cout << solution.longestCommonPrefix(v);
+	//vector<string> v = { "flower","flow","flight" };
+	//cout << solution.longestCommonPrefix(v);
+
+	// 20
+	//cout << solution.isValid("(]");
+
+	// 21
+	// merge two sorted lists
+
+	// 26
+
 }

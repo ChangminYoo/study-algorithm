@@ -57,7 +57,8 @@ public:
 #pragma region Roman to Integer
 	int romanToInt(string s) {
 		int ret = 0;
-		unordered_map<char, int> um{
+		unordered_map<char, int> um
+		{
 			{'I', 1},
 			{'V', 5},
 			{'X', 10},
@@ -98,6 +99,102 @@ public:
 		}
 
 		return prefix;
+	}
+#pragma endregion
+
+#pragma region Valid Parentheses
+	bool isValid(string s) {
+		if (s.length() == 1) return false;
+
+		unordered_map<char, char> um
+		{
+			{')' ,'('},
+			{'}', '{'},
+			{']', '['}
+		};
+
+		stack<char> st;
+		for (auto c : s)
+		{
+			if (st.empty())
+			{
+				st.push(c);
+			}
+			else
+			{
+				if (um.find(c) != um.end())
+				{
+					char temp = st.top();
+					st.pop();
+					if (temp != um[c])
+					{
+						return false;
+					}
+				}
+				else
+				{
+					st.push(c);
+				}
+			}
+		}
+
+		if (st.empty() == false)
+			return false;
+
+		return true;
+	}
+#pragma endregion
+
+#pragma region Merge Two Sorted Lists
+	struct ListNode {
+		int val;
+		ListNode* next;
+		ListNode() : val(0), next(nullptr) {}
+		ListNode(int x) : val(x), next(nullptr) {}
+		ListNode(int x, ListNode* next) : val(x), next(next) {}
+	};
+
+	ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+		ListNode* ret = new ListNode();
+		ListNode* pret = ret;
+
+		if (list1 == nullptr) return list2;
+		if (list2 == nullptr) return list1;
+
+		while (list1 != nullptr && list2 != nullptr)
+		{
+			int val1 = list1->val;
+			int val2 = list2->val;
+
+			if (val1 <= val2)
+			{
+				pret->next = list1;
+				list1 = list1->next;
+			}
+			else
+			{
+				pret->next = list2;
+				list2 = list2->next;
+			}
+			pret = pret->next;
+		}
+
+		if (list1 != nullptr)
+		{
+			pret->next = list1;
+		}
+		if (list2 != nullptr)
+		{
+			pret->next = list2;
+		}
+
+		return ret->next;
+	}
+#pragma endregion
+
+# pragma region Remove Duplicates from sorted array
+	int removeDuplicates(vector<int>& nums) {
+
 	}
 #pragma endregion
 };
