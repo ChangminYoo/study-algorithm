@@ -194,7 +194,35 @@ public:
 
 # pragma region Remove Duplicates from sorted array
 	int removeDuplicates(vector<int>& nums) {
+		int prevNum = nums[0];
+		vector<int> temp { prevNum };
 
+		for (int i = 1; i < nums.size(); i++)
+		{
+			if (nums[i] != prevNum)
+			{
+				temp.push_back(nums[i]);
+				prevNum = nums[i];
+			}
+		}
+
+		nums = temp;
+		return temp.size();
+	}
+#pragma endregion
+
+#pragma region Remove Element
+	int removeElement(vector<int>& nums, int val) {
+		int temp = 0;
+		for (int i = 0; i < nums.size(); i++)
+		{
+			if (nums[i] != val)
+			{
+				nums[temp] = nums[i];
+				temp++;
+			}
+		}
+		return temp;
 	}
 #pragma endregion
 };

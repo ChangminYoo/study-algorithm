@@ -25,5 +25,10 @@ int main(void)
 	// merge two sorted lists
 
 	// 26
+	//vector<int> v = { 1,1,2 };
+	//solution.removeDuplicates(v);
 
+	// 27
+	//vector<int> v = { 0,1,2,2,3,0,4,2 };
+	//solution.removeElement(v, 2);
 }
