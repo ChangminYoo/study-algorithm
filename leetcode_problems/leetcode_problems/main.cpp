@@ -31,4 +31,19 @@ int main(void)
 	// 27
 	//vector<int> v = { 0,1,2,2,3,0,4,2 };
 	//solution.removeElement(v, 2);
+
+	// 28
+	// cout << solution.strStr("sadbutsad", "sad");
+
+	// 35
+	//vector<int> v {1,3,5,6};
+	//cout << solution.searchInsert(v, 7);
+
+	/// TOP Interview 150
+	/// https://leetcode.com/studyplan/top-interview-150/
+	// 88
+
+	// 80
+	vector<int> v = {1,1,1, 1};
+	cout << solution.removeDuplicatesII(v);
 }

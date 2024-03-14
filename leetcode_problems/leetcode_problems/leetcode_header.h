@@ -70,7 +70,7 @@ public:
 
 		for (int i = 0; i < s.length(); i++)
 		{
-			// ÀÌÀü °ª º¸´Ù Å©¸é
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
 			if (um[s[i]] < um[s[i + 1]])
 			{
 				ret -= um[s[i]];
@@ -224,5 +224,89 @@ public:
 		}
 		return temp;
 	}
+#pragma endregion
+
+#pragma region Find the Index of the First Occurrence in a String
+	int strStr(string haystack, string needle) {
+        int index = 0;
+		int needleLength = needle.length();
+
+		for (int i = 0; i < haystack.length(); i++)
+		{
+			string substr = haystack.substr(i, needleLength);
+			if (substr == needle)
+			{
+				return i;
+			}
+		}
+		return -1;
+    }
+#pragma endregion
+
+#pragma region Search Insert Position
+int searchInsert(vector<int>& nums, int target) {
+        int ret = 0;
+		if (target < nums[0]) return 0;
+
+		for (int i = 0; i < nums.size(); i++)
+		{
+			if (nums[i] == target)
+			{
+				return ret;
+			}
+			else
+			{
+				if (i < nums.size() - 1 &&
+					nums[i] < target && nums[i+1] >= target)
+				{
+					return ++ret;
+				}
+			}
+			++ret;
+		}
+		return ret;
+    }
+#pragma endregion
+
+/// TOP Interview 150
+#pragma region Merge Sorted Array
+void mergesortedarray(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+	if (m == 0)
+	{
+		nums1 = nums2;
+		return;
+	}
+
+	vector<int> temp;
+	for (int i = 0; i < m; i++)
+	{
+		temp.push_back(nums1[i]);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		temp.push_back(nums2[i]);
+	}
+	sort(temp.begin(), temp.end());
+	nums1 = temp;
+}
+#pragma endregion
+
+#pragma region Reove Duplicates form Array II
+int removeDuplicatesII(vector<int>& nums) {
+	int p1 = 0;
+	if (nums.size() <= 1)
+		return 1;
+
+	for (int i = 0; i < nums.size(); i++)
+	{
+		if (p1 - 2 >= 0 && nums[p1 - 2] == nums[i])
+		{
+			continue;
+		}
+		nums[p1] = nums[i];
+		p1++;
+	}
+	return p1;
+}
 #pragma endregion
 };
