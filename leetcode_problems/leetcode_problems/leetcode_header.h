@@ -309,4 +309,51 @@ int removeDuplicatesII(vector<int>& nums) {
 	return p1;
 }
 #pragma endregion
+
+#pragma region Majority Element
+int majorityElement(vector<int>& nums) {
+	sort(nums.begin(), nums.end());
+	unordered_map<int, int> m;
+
+	for (int i = 0; i < nums.size(); i++)
+	{
+		m[nums[i]]++;
+	}
+
+	int moreHalf = nums.size() / 2;
+	for (auto i : m)
+	{
+		if (i.second > moreHalf)
+			return i.first;
+	}
+
+	return 0;
+}
+#pragma endregion
+
+#pragma region Rotate Array
+void rotate(vector<int>& nums, int k) {
+	queue<int> q;
+	
+	for (int i = nums.size() - 1; i >= 0; i--)
+	{
+		q.push(nums[i]);
+	}
+
+	for (int i = 0; i < k; i++)
+	{
+		int temp = q.front();
+		q.pop();
+		q.push(temp);
+	}
+
+	for (int i = nums.size() - 1; i >= 0; i--)
+	{
+		nums[i] = q.front();
+		q.pop();
+	}
+}
+#pragma endregion
+
+
 };

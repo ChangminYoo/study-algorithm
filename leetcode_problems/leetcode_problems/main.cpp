@@ -44,6 +44,14 @@ int main(void)
 	// 88
 
 	// 80
-	vector<int> v = {1,1,1, 1};
-	cout << solution.removeDuplicatesII(v);
+	//vector<int> v = {1, 1, 1, 1};
+	//cout << solution.removeDuplicatesII(v);
+
+	// 169
+	//vector<int> v = { 3,2,3 };
+	//cout << solution.majorityElement(v);
+
+	// 189
+	vector<int> v = { 1,2,3,4,5,6,7 };
+	solution.rotate(v, 3);
 }
